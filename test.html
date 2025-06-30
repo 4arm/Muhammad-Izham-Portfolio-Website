@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .popup-box {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 20px;
+      border: 2px solid #333;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+      z-index: 1000;
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 999;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Buttons to trigger different popups -->
+<button onclick="openPopup('popup1')">Open Popup 1</button>
+<button onclick="openPopup('popup2')">Open Popup 2</button>
+
+<!-- Shared Overlay -->
+<div class="overlay" id="overlay" onclick="closeAllPopups()"></div>
+
+<!-- Popup 1 -->
+<div class="popup-box" id="popup1">
+  <p>This is Popup 1!</p>
+</div>
+
+<!-- Popup 2 -->
+<div class="popup-box" id="popup2">
+  <p>This is Popup 2!</p>
+</div>
+
+<script>
+  function openPopup(id) {
+    document.getElementById(id).style.display = 'block';
+    document.getElementById('overlay').style.display = 'block';
+  }
+
+  function closeAllPopups() {
+    document.querySelectorAll('.popup-box').forEach(popup => {
+      popup.style.display = 'none';
+    });
+    document.getElementById('overlay').style.display = 'none';
+  }
+</script>
+
+</body>
+</html>
